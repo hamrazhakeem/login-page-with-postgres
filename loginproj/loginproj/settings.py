@@ -85,12 +85,12 @@ WSGI_APPLICATION = 'loginproj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test',
-        'HOST' : 'localhost',
-        'PORT' : '5432',
-        'USER' : 'postgres',
-        'PASSWORD' : 'Hamraz458',
+        'ENGINE': env('DB_ENGINE'),
+        'NAME': env('DB_NAME'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
     }
 }
 
