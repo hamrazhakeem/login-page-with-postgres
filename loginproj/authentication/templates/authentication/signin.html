@@ -1,0 +1,95 @@
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+      .btn-primary a{
+        color: white;
+        text-decoration: none;
+      }
+      .btn-secondary a{
+        color: white;
+        text-decoration: none;
+      }
+    </style>
+</head>
+<body>
+    <!-- Section: Design Block -->
+<section class="text-center">
+    <!-- Background image -->
+    <div class="p-5 bg-image" style="
+          background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+          height: 300px;
+          "></div>
+    <!-- Background image -->
+  
+    <div class="card mx-4 mx-md-5 shadow-lg" style="
+    margin-top: -225px;
+    background: hsla(0, 0%, 100%, 0.8);
+    backdrop-filter: blur(30px);
+    ">
+    <div class="card-body py-5 px-md-5">
+  
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8">
+            <h2 class="fw-bold mb-5">LOG IN NOW</h2>
+            {% for message in messages %}
+              {% if message.tags == 'success' %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>Success:</strong> {{ message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              {% elif message.tags == 'error' %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>Error:</strong> {{ message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+              {% endif %}
+            {% endfor %}
+            <form method=POST>
+              {% csrf_token %}
+              
+              {{ form|crispy }}
+
+              <!-- Submit button -->
+              <a href="{% url 'home' %}"><button type="submit" class="btn btn-primary btn-block mb-4">
+                  Log in
+              </button></a>
+
+              <div>
+                  <a href="{% url 'signup' %}"><button type="button" class="btn btn-primary btn-lg">Sign Up</button></a>
+                  <a href="{% url 'customadmin:adminsignin' %}"><button type="button" class="btn btn-secondary btn-lg">Admin Login</button></a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
+
+  <script>
+    // Add this script to handle the dismissal of alerts
+    document.addEventListener('DOMContentLoaded', function () {
+      var closeButtons = document.querySelectorAll('.alert .close');
+  
+      closeButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          var alert = this.closest('.alert');
+          alert.style.display = 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

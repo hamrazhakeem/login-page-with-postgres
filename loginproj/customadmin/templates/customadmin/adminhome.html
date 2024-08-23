@@ -1,0 +1,29 @@
+{% extends 'customadmin/base.html' %}
+
+{% block title %}Admin Home{% endblock %}
+
+{% block additional_styles %}
+{% endblock %}
+{% block top %}
+<div>
+    Hey Hamraz, You can access admin page
+</div>
+<div class="mt-5">
+    <a href="{% url 'customadmin:createuser' %}"><button type="submit" class="btn btn-success btn-block mb-4">
+        Create User
+    </button></a>
+    <a href="{% url 'customadmin:manageusers' %}"><button type="submit" class="btn btn-primary btn-block mb-4">
+        Manage Users
+    </button></a>
+    <a href="{% url 'customadmin:adminsignout' %}"><button type="submit" class="btn btn-danger btn-block mb-4">
+        Logout
+    </button></a>
+</div>
+{% endblock %}
+{% block content %}
+    <section class="text-center">
+    </section>
+{% endblock %}
+
+{% block additional_scripts %}
+{% endblock %}

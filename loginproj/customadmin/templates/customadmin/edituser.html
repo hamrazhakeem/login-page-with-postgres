@@ -1,0 +1,33 @@
+{% extends 'customadmin/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block additional_styles %}
+{% endblock %}
+{% block top %}
+<div>
+    Edit User
+</div>
+<div>
+    <form method=POST>
+        {% csrf_token %}
+        
+        {{ form|crispy }}
+
+        <!-- Submit button -->
+        <a href="{% url 'customadmin:adminhome' %}"><button type="submit" class="btn btn-primary btn-block mb-4">
+            Update
+        </button></a>
+
+    </form>
+</div>
+{% endblock %}
+{% block content %}
+    <section class="text-center">
+    </section>
+{% endblock %}
+
+{% block additional_scripts %}
+{% endblock %}
